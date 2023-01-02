@@ -55,6 +55,7 @@ export 'src/winrt_com_interop_helpers.dart';
 export 'src/winrt_constants.dart';
 export 'src/winrt_helpers.dart';
 export 'src/winrt/foundation/winrt_enum.dart';
+export 'src/winrt/internal/async_helpers.dart';
 export 'src/winrt/internal/map_helpers.dart';
 
 // Windows Runtime classes and interfaces

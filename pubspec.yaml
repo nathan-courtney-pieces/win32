@@ -1,9 +1,10 @@
 name: win32
 description: A Dart library for accessing common Win32 APIs using FFI. No C required!
-version: 4.0.1
+version: 5.0.0-pre
 homepage: https://win32.pub
 repository: https://github.com/timsneath/win32
 issue_tracker: https://github.com/timsneath/win32/issues
+publish_to: none
 
 environment:
   sdk: '>=2.17.0 <3.0.0'
@@ -14,6 +15,10 @@ platforms:
 
 dependencies:
   ffi: '>=1.1.2 <3.0.0'
+  windows_devices:
+    git:
+      url: https://github.com/timsneath/windows_devices.git
+      ref: main
 
 dev_dependencies:
   # Handle command-line arguments for example apps.

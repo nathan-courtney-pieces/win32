@@ -7,6 +7,7 @@ import 'package:test/test.dart';
 import 'package:win32/src/winrt/foundation/uri.dart' as winrt_uri;
 import 'package:win32/src/winrt/internal/comobject_pointer.dart';
 import 'package:win32/winrt.dart';
+import 'package:windows_devices/windows_devices.dart';
 
 // Exhaustively test the WinRT Collections to make sure constructors,
 // properties and methods are working correctly.

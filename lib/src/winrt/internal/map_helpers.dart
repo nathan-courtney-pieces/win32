@@ -5,13 +5,12 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
+import 'package:windows_devices/windows_devices.dart';
 
 import '../../combase.dart';
 import '../../guid.dart';
 import '../../utils.dart';
 import '../../winrt_helpers.dart';
-import '../devices/sensors/enums.g.dart';
-import '../devices/sensors/pedometerreading.dart';
 import '../foundation/collections/iiterator.dart';
 import '../foundation/collections/ikeyvaluepair.dart';
 import 'comobject_pointer.dart';

@@ -9,6 +9,7 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
+import 'package:windows_devices/windows_devices.dart';
 
 import '../../../com/iinspectable.dart';
 import '../../../combase.dart';
@@ -19,7 +20,6 @@ import '../../../utils.dart';
 import '../../../win32/api_ms_win_core_winrt_string_l1_1_0.g.dart';
 import '../../../winrt_callbacks.dart';
 import '../../../winrt_helpers.dart';
-import '../../devices/power/batteryreport.dart';
 import '../../foundation/collections/ivectorview.dart';
 import '../../internal/hstring_array.dart';
 import '../../system/user.dart';

@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'package:win32/winrt.dart';
+import 'package:windows_devices/windows_devices.dart';
 
 // Test the WinRT map helper functions to make sure everything is working
 // correctly.
