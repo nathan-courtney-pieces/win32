@@ -68,6 +68,7 @@ export 'src/winrt/data/json/ijsonvalue.dart';
 export 'src/winrt/data/json/jsonarray.dart';
 export 'src/winrt/data/json/jsonobject.dart';
 export 'src/winrt/data/json/jsonvalue.dart';
+export 'src/winrt/foundation/iasyncoperation.dart';
 export 'src/winrt/foundation/ipropertyvalue.dart';
 export 'src/winrt/foundation/ireference.dart';
 export 'src/winrt/foundation/propertyvalue.dart';
