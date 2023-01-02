@@ -57,6 +57,8 @@ export 'src/winrt_helpers.dart';
 export 'src/winrt/foundation/winrt_enum.dart';
 export 'src/winrt/internal/async_helpers.dart';
 export 'src/winrt/internal/map_helpers.dart';
+export 'src/winrt/internal/ipropertyvalue_helpers.dart';
+export 'src/winrt/internal/vector_helper.dart';
 
 // Windows Runtime classes and interfaces
 export 'src/winrt/data/json/ijsonarray.dart';
