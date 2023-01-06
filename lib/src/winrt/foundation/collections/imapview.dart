@@ -5,7 +5,6 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:windows_devices/windows_devices.dart';
 
 import '../../../com/iinspectable.dart';
 import '../../../combase.dart';
