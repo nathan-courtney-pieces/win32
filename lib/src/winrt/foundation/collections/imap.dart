@@ -39,6 +39,7 @@ class IMap<K, V> extends IInspectable
   final String _iterableIid;
   late final IKeyValuePair<K, V> Function(Pointer<COMObject>) _iterableCreator;
   final V Function(Pointer<COMObject>)? _creator;
+  final K Function(int)? _enumKeyCreator;
   final V Function(int)? _enumCreator;
 
   /// Creates an empty [IMap].
@@ -104,9 +105,11 @@ class IMap<K, V> extends IInspectable
     super.ptr, {
     required String iterableIid,
     V Function(Pointer<COMObject>)? creator,
+    K Function(int)? enumKeyCreator,
     V Function(int)? enumCreator,
   })  : _iterableIid = iterableIid,
         _creator = creator,
+        _enumKeyCreator = enumKeyCreator,
         _enumCreator = enumCreator {
     if (!isSupportedKeyValuePair<K, V>()) {
       throw ArgumentError('Unsupported key-value pair: IMap<$K, $V>');
@@ -116,6 +119,10 @@ class IMap<K, V> extends IInspectable
       throw ArgumentError.notNull('creator');
     }
 
+    if (isSubtypeOfWinRTEnum<K>() && enumKeyCreator == null) {
+      throw ArgumentError.notNull('enumKeyCreator');
+    }
+
     if (isSubtypeOfWinRTEnum<V>() && enumCreator == null) {
       throw ArgumentError.notNull('enumCreator');
     }
@@ -123,6 +130,7 @@ class IMap<K, V> extends IInspectable
     _iterableCreator = (Pointer<COMObject> ptr) => IKeyValuePair.fromRawPointer(
         ptr,
         creator: _creator,
+        enumKeyCreator: _enumKeyCreator,
         enumCreator: _enumCreator);
   }
 
@@ -150,10 +158,6 @@ class IMap<K, V> extends IInspectable
       return _lookup_Uint32_COMObject(key as int);
     }
 
-    if (isSameType<K, PedometerStepKind>()) {
-      return lookupByPedometerStepKind(key as PedometerStepKind) as V;
-    }
-
     if (isSameType<K, String>()) {
       if (isSameType<V, String>()) {
         return _lookup_String_String(key as String) as V;
@@ -168,6 +172,10 @@ class IMap<K, V> extends IInspectable
       }
 
       return _lookup_String_Object(key as String) as V;
+    }
+
+    if (isSubtypeOfWinRTEnum<K>()) {
+      return _lookup_enum_COMObject(key as WinRTEnum);
     }
 
     return _lookup_Object_Object(key as IInspectable) as V;
@@ -223,6 +231,29 @@ class IMap<K, V> extends IInspectable
     if (retValuePtr.ref.lpVtbl == nullptr) return null;
 
     return IPropertyValue.fromRawPointer(retValuePtr).value;
+  }
+
+  V _lookup_enum_COMObject(WinRTEnum key) {
+    final retValuePtr = calloc<COMObject>();
+
+    final hr =
+        ptr.ref.lpVtbl.value
+                .elementAt(6)
+                .cast<
+                    Pointer<
+                        NativeFunction<
+                            HRESULT Function(
+                                Pointer, Int32, Pointer<COMObject>)>>>()
+                .value
+                .asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
+            ptr.ref.lpVtbl, key.value, retValuePtr);
+
+    if (FAILED(hr)) {
+      free(retValuePtr);
+      throw WindowsException(hr);
+    }
+
+    return _creator!(retValuePtr);
   }
 
   V _lookup_Uint32_COMObject(int key) {
@@ -409,10 +440,10 @@ class IMap<K, V> extends IInspectable
   bool hasKey(K value) {
     if (isSameType<K, Guid>()) return _hasKey_Guid(value as Guid);
     if (isSameType<K, int>()) return _hasKey_Uint32(value as int);
-    if (isSameType<K, PedometerStepKind>()) {
-      return hasKeyByPedometerStepKind(value as PedometerStepKind);
-    }
     if (isSameType<K, String>()) return _hasKey_String(value as String);
+    if (isSubtypeOfWinRTEnum<K>()) {
+      return _hasKey_enum(value as WinRTEnum);
+    }
 
     return _hasKey_Object(value as IInspectable);
   }
@@ -437,6 +468,28 @@ class IMap<K, V> extends IInspectable
       return retValuePtr.value;
     } finally {
       free(nativeGuidPtr);
+      free(retValuePtr);
+    }
+  }
+
+  bool _hasKey_enum(WinRTEnum value) {
+    final retValuePtr = calloc<Bool>();
+
+    try {
+      final hr = ptr.ref.lpVtbl.value
+              .elementAt(8)
+              .cast<
+                  Pointer<
+                      NativeFunction<
+                          HRESULT Function(Pointer, Int32, Pointer<Bool>)>>>()
+              .value
+              .asFunction<int Function(Pointer, int, Pointer<Bool>)>()(
+          ptr.ref.lpVtbl, value.value, retValuePtr);
+
+      if (FAILED(hr)) throw WindowsException(hr);
+
+      return retValuePtr.value;
+    } finally {
       free(retValuePtr);
     }
   }
@@ -550,11 +603,6 @@ class IMap<K, V> extends IInspectable
       return _insert_Uint32_COMObject(key as int, (value as IInspectable).ptr);
     }
 
-    if (isSameType<K, PedometerStepKind>()) {
-      return insertByPedometerStepKind(
-          key as PedometerStepKind, (value as IInspectable).ptr);
-    }
-
     if (isSameType<K, String>()) {
       if (isSameType<V, String>()) {
         return _insert_String_String(key as String, value as String);
@@ -569,6 +617,11 @@ class IMap<K, V> extends IInspectable
       }
 
       return _insert_String_Object(key as String, value);
+    }
+
+    if (isSubtypeOfInspectable<K>()) {
+      return _insert_enum_COMObject(
+          key as WinRTEnum, (value as IInspectable).ptr);
     }
 
     return _insert_Object_Object(key as IInspectable, value);
@@ -599,6 +652,30 @@ class IMap<K, V> extends IInspectable
     } finally {
       if (value == null) free(propertyValuePtr);
       free(nativeGuidPtr);
+      free(retValuePtr);
+    }
+  }
+
+  bool _insert_enum_COMObject(WinRTEnum key, Pointer<COMObject> value) {
+    final retValuePtr = calloc<Bool>();
+
+    try {
+      final hr = ptr.ref.lpVtbl.value
+              .elementAt(10)
+              .cast<
+                  Pointer<
+                      NativeFunction<
+                          HRESULT Function(
+                              Pointer, Int32, COMObject, Pointer<Bool>)>>>()
+              .value
+              .asFunction<
+                  int Function(Pointer, int, COMObject, Pointer<Bool>)>()(
+          ptr.ref.lpVtbl, key.value, value.ref, retValuePtr);
+
+      if (FAILED(hr)) throw WindowsException(hr);
+
+      return retValuePtr.value;
+    } finally {
       free(retValuePtr);
     }
   }
@@ -739,10 +816,8 @@ class IMap<K, V> extends IInspectable
   void remove(K key) {
     if (isSameType<K, Guid>()) return _remove_Guid(key as Guid);
     if (isSameType<K, int>()) return _remove_Uint32(key as int);
-    if (isSameType<K, PedometerStepKind>()) {
-      return removeByPedometerStepKind(key as PedometerStepKind);
-    }
     if (isSameType<K, String>()) return _remove_String(key as String);
+    if (isSubtypeOfWinRTEnum<K>()) return _remove_enum(key as WinRTEnum);
 
     return _remove_Object(key as IInspectable);
   }
@@ -757,6 +832,16 @@ class IMap<K, V> extends IInspectable
         ptr.ref.lpVtbl, nativeGuidPtr.ref);
 
     free(nativeGuidPtr);
+
+    if (FAILED(hr)) throw WindowsException(hr);
+  }
+
+  void _remove_enum(WinRTEnum key) {
+    final hr = ptr.ref.lpVtbl.value
+        .elementAt(11)
+        .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Int32)>>>()
+        .value
+        .asFunction<int Function(Pointer, int)>()(ptr.ref.lpVtbl, key.value);
 
     if (FAILED(hr)) throw WindowsException(hr);
   }

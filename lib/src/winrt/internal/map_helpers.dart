@@ -57,20 +57,19 @@ class MapHelper {
 /// isSupportedKeyValuePair<String, Object?>(); // true
 /// ```
 bool isSupportedKeyValuePair<K, V>() {
-  // e.g. IKeyValuePair<int, IBuffer>
+  // e.g. IKeyValuePair<int, IBuffer?>
   if (isSameType<K, int>() && isSubtypeOfInspectable<V>()) {
     return true;
   }
 
-  // e.g. IKeyValuePair<Guid, SpatialSurfaceInfo>, IKeyValuePair<Guid, Object?>
+  // e.g. IKeyValuePair<Guid, SpatialSurfaceInfo?>, IKeyValuePair<Guid, Object?>
   if (isSameType<K, Guid>() &&
       (isSubtypeOfInspectable<V>() || isSimilarType<V, Object>())) {
     return true;
   }
 
-  // e.g. IKeyValuePair<PedometerStepKind, PedometerReading>
-  if (isSameType<K, PedometerStepKind>() &&
-      isSimilarType<V, PedometerReading>()) {
+  // e.g. IKeyValuePair<PedometerStepKind, PedometerReading?>
+  if (isSubtypeOfWinRTEnum<K>() && isSubtypeOfInspectable<V>()) {
     return true;
   }
 

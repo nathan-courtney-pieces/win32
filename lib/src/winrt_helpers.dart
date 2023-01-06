@@ -12,7 +12,7 @@ import 'package:ffi/ffi.dart';
 
 import 'com/iinspectable.dart';
 import 'combase.dart';
-import 'constants.dart';
+import 'constants_nodoc.dart';
 import 'exceptions.dart';
 import 'guid.dart';
 import 'macros.dart';
@@ -20,18 +20,22 @@ import 'types.dart';
 import 'utils.dart';
 import 'win32/api_ms_win_core_winrt_l1_1_0.g.dart';
 import 'win32/api_ms_win_core_winrt_string_l1_1_0.g.dart';
+import 'win32/ole32.g.dart';
 import 'winrt/foundation/winrt_enum.dart';
 
-/// Initializes the Windows Runtime on the current thread with a single-threaded
-/// concurrency model.
-///
-/// {@category winrt}
-void winrtInitialize() => RoInitialize(RO_INIT_TYPE.RO_INIT_SINGLETHREADED);
+@Deprecated('winrtInitialize is no longer required. The Windows Runtime is '
+    'automatically initialized by the Dart projection if it is not already '
+    'initialized on a given thread when a WinRT class is activated. If you '
+    'explicitly want to initialize the current thread with a specific '
+    'threading model, use RoInitialize directly instead. This function will be '
+    'removed in the next major release.')
+void winrtInitialize() {}
 
-/// Closes the Windows Runtime on the current thread.
-///
-/// {@category winrt}
-void winrtUninitialize() => RoUninitialize();
+@Deprecated('winrtUninitialize is not required in most scenarios, since '
+    'Windows will clean up the process on exit. If you explicitly want to '
+    'uninitialize the Windows Runtime, use RoUninitialize directly instead. '
+    'This function will be removed in the next major release.')
+void winrtUninitialize() {}
 
 extension WinRTStringConversion on Pointer<HSTRING> {
   /// Gets the Dart string at the handle pointed to by this object.
@@ -71,13 +75,24 @@ Pointer<COMObject> ActivateClass(String className,
     {Allocator allocator = calloc}) {
   // Create a HSTRING representing the object
   final hClassName = convertToHString(className);
+  final inspectablePtr = allocator<COMObject>();
 
   try {
-    final inspectablePtr = allocator<COMObject>();
     final hr = RoActivateInstance(hClassName, inspectablePtr.cast());
     if (FAILED(hr)) throw WindowsException(hr);
     // Return a pointer to the relevant class
     return inspectablePtr;
+  } on WindowsException catch (e) {
+    // If RoActivateInstance fails because combase hasn't been loaded yet then
+    // load combase so that it "just works" for apartment-agnostic code.
+    if (e.hr == CO_E_NOTINITIALIZED) {
+      _initializeMTA();
+      final hr = RoActivateInstance(hClassName, inspectablePtr.cast());
+      if (FAILED(hr)) throw WindowsException(hr);
+      // Return a pointer to the relevant class
+      return inspectablePtr;
+    }
+    rethrow;
   } finally {
     WindowsDeleteString(hClassName);
   }
@@ -111,9 +126,33 @@ Pointer<COMObject> CreateActivationFactory(String className, String iid,
     if (FAILED(hr)) throw WindowsException(hr);
     // Return a pointer to the relevant class
     return activationFactoryPtr;
+  } on WindowsException catch (e) {
+    // If RoGetActivationFactory fails because combase hasn't been loaded yet
+    // then load combase so that it "just works" for apartment-agnostic code.
+    if (e.hr == CO_E_NOTINITIALIZED) {
+      _initializeMTA();
+      final hr =
+          RoGetActivationFactory(hClassName, pIID, activationFactoryPtr.cast());
+      if (FAILED(hr)) throw WindowsException(hr);
+      // Return a pointer to the relevant class
+      return activationFactoryPtr;
+    }
+    rethrow;
   } finally {
     free(pIID);
     WindowsDeleteString(hClassName);
+  }
+}
+
+/// Ensures the current thread is enabled for COM, using the multithreaded
+/// apartment model (MTA).
+void _initializeMTA() {
+  final pCookie = calloc<IntPtr>();
+  try {
+    final res = CoIncrementMTAUsage(pCookie);
+    if (FAILED(res)) throw WindowsException(res);
+  } finally {
+    free(pCookie);
   }
 }
 
