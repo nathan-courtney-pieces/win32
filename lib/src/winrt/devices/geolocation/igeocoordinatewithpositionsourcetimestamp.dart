@@ -1,4 +1,4 @@
-// ifileopenpicker3.dart
+// igeocoordinatewithpositionsourcetimestamp.dart
 
 // THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED DIRECTLY.
 
@@ -19,23 +19,26 @@ import '../../../utils.dart';
 import '../../../win32/api_ms_win_core_winrt_string_l1_1_0.g.dart';
 import '../../../winrt_callbacks.dart';
 import '../../../winrt_helpers.dart';
+import '../../foundation/ireference.dart';
 import '../../internal/hstring_array.dart';
-import '../../system/user.dart';
+import '../../internal/ipropertyvalue_helpers.dart';
 
 /// @nodoc
-const IID_IFileOpenPicker3 = '{d9a5c5b3-c5dc-5b98-bd80-a8d0ca0584d8}';
+const IID_IGeocoordinateWithPositionSourceTimestamp =
+    '{8543fc02-c9f1-4610-afe0-8bc3a6a87036}';
 
 /// {@category Interface}
 /// {@category winrt}
-class IFileOpenPicker3 extends IInspectable {
+class IGeocoordinateWithPositionSourceTimestamp extends IInspectable {
   // vtable begins at 6, is 1 entries long.
-  IFileOpenPicker3.fromRawPointer(super.ptr);
+  IGeocoordinateWithPositionSourceTimestamp.fromRawPointer(super.ptr);
 
-  factory IFileOpenPicker3.from(IInspectable interface) =>
-      IFileOpenPicker3.fromRawPointer(
-          interface.toInterface(IID_IFileOpenPicker3));
+  factory IGeocoordinateWithPositionSourceTimestamp.from(
+          IInspectable interface) =>
+      IGeocoordinateWithPositionSourceTimestamp.fromRawPointer(
+          interface.toInterface(IID_IGeocoordinateWithPositionSourceTimestamp));
 
-  User? get user {
+  DateTime? get positionSourceTimestamp {
     final retValuePtr = calloc<COMObject>();
 
     final hr = ptr.ref.vtable
@@ -58,6 +61,11 @@ class IFileOpenPicker3 extends IInspectable {
       return null;
     }
 
-    return User.fromRawPointer(retValuePtr);
+    final reference = IReference<DateTime>.fromRawPointer(retValuePtr,
+        referenceIid: '{5541d8a7-497c-5aa4-86fc-7713adbf2a2c}');
+    final value = reference.value;
+    reference.release();
+
+    return value;
   }
 }

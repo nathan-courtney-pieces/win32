@@ -1,4 +1,4 @@
-// iipinformation.dart
+// igeocoordinatesatellitedata.dart
 
 // THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED DIRECTLY.
 
@@ -22,21 +22,22 @@ import '../../../winrt_helpers.dart';
 import '../../foundation/ireference.dart';
 import '../../internal/hstring_array.dart';
 import '../../internal/ipropertyvalue_helpers.dart';
-import 'networkadapter.dart';
 
 /// @nodoc
-const IID_IIPInformation = '{d85145e0-138f-47d7-9b3a-36bb488cef33}';
+const IID_IGeocoordinateSatelliteData =
+    '{c32a74d9-2608-474c-912c-06dd490f4af7}';
 
 /// {@category Interface}
 /// {@category winrt}
-class IIPInformation extends IInspectable {
-  // vtable begins at 6, is 2 entries long.
-  IIPInformation.fromRawPointer(super.ptr);
+class IGeocoordinateSatelliteData extends IInspectable {
+  // vtable begins at 6, is 3 entries long.
+  IGeocoordinateSatelliteData.fromRawPointer(super.ptr);
 
-  factory IIPInformation.from(IInspectable interface) =>
-      IIPInformation.fromRawPointer(interface.toInterface(IID_IIPInformation));
+  factory IGeocoordinateSatelliteData.from(IInspectable interface) =>
+      IGeocoordinateSatelliteData.fromRawPointer(
+          interface.toInterface(IID_IGeocoordinateSatelliteData));
 
-  NetworkAdapter? get networkAdapter {
+  double? get positionDilutionOfPrecision {
     final retValuePtr = calloc<COMObject>();
 
     final hr = ptr.ref.vtable
@@ -59,10 +60,15 @@ class IIPInformation extends IInspectable {
       return null;
     }
 
-    return NetworkAdapter.fromRawPointer(retValuePtr);
+    final reference = IReference<double>.fromRawPointer(retValuePtr,
+        referenceIid: '{2f2d6c29-5473-5f3e-92e7-96572bb990e2}');
+    final value = reference.value;
+    reference.release();
+
+    return value;
   }
 
-  int? get prefixLength {
+  double? get horizontalDilutionOfPrecision {
     final retValuePtr = calloc<COMObject>();
 
     final hr = ptr.ref.vtable
@@ -85,8 +91,39 @@ class IIPInformation extends IInspectable {
       return null;
     }
 
-    final reference = IReference<int>.fromRawPointer(retValuePtr,
-        referenceIid: '{e5198cc8-2873-55f5-b0a1-84ff9e4aad62}');
+    final reference = IReference<double>.fromRawPointer(retValuePtr,
+        referenceIid: '{2f2d6c29-5473-5f3e-92e7-96572bb990e2}');
+    final value = reference.value;
+    reference.release();
+
+    return value;
+  }
+
+  double? get verticalDilutionOfPrecision {
+    final retValuePtr = calloc<COMObject>();
+
+    final hr = ptr.ref.vtable
+            .elementAt(8)
+            .cast<
+                Pointer<
+                    NativeFunction<
+                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+            .value
+            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+        ptr.ref.lpVtbl, retValuePtr);
+
+    if (FAILED(hr)) {
+      free(retValuePtr);
+      throw WindowsException(hr);
+    }
+
+    if (retValuePtr.ref.lpVtbl == nullptr) {
+      free(retValuePtr);
+      return null;
+    }
+
+    final reference = IReference<double>.fromRawPointer(retValuePtr,
+        referenceIid: '{2f2d6c29-5473-5f3e-92e7-96572bb990e2}');
     final value = reference.value;
     reference.release();
 
