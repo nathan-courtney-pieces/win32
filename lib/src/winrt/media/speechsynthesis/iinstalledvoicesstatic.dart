@@ -1,4 +1,4 @@
-// igeocoordinatesatellitedata2.dart
+// iinstalledvoicesstatic.dart
 
 // THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED DIRECTLY.
 
@@ -19,25 +19,24 @@ import '../../../utils.dart';
 import '../../../win32/api_ms_win_core_winrt_string_l1_1_0.g.dart';
 import '../../../winrt_callbacks.dart';
 import '../../../winrt_helpers.dart';
-import '../../foundation/ireference.dart';
+import '../../foundation/collections/ivectorview.dart';
 import '../../internal/hstring_array.dart';
-import '../../internal/ipropertyvalue_helpers.dart';
+import 'voiceinformation.dart';
 
 /// @nodoc
-const IID_IGeocoordinateSatelliteData2 =
-    '{761c8cfd-a19d-5a51-80f5-71676115483e}';
+const IID_IInstalledVoicesStatic = '{7d526ecc-7533-4c3f-85be-888c2baeebdc}';
 
 /// {@category Interface}
 /// {@category winrt}
-class IGeocoordinateSatelliteData2 extends IInspectable {
+class IInstalledVoicesStatic extends IInspectable {
   // vtable begins at 6, is 2 entries long.
-  IGeocoordinateSatelliteData2.fromRawPointer(super.ptr);
+  IInstalledVoicesStatic.fromRawPointer(super.ptr);
 
-  factory IGeocoordinateSatelliteData2.from(IInspectable interface) =>
-      IGeocoordinateSatelliteData2.fromRawPointer(
-          interface.toInterface(IID_IGeocoordinateSatelliteData2));
+  factory IInstalledVoicesStatic.from(IInspectable interface) =>
+      IInstalledVoicesStatic.fromRawPointer(
+          interface.toInterface(IID_IInstalledVoicesStatic));
 
-  double? get geometricDilutionOfPrecision {
+  List<VoiceInformation> get allVoices {
     final retValuePtr = calloc<COMObject>();
 
     final hr = ptr.ref.vtable
@@ -55,20 +54,16 @@ class IGeocoordinateSatelliteData2 extends IInspectable {
       throw WindowsException(hr);
     }
 
-    if (retValuePtr.ref.lpVtbl == nullptr) {
-      free(retValuePtr);
-      return null;
-    }
+    final vectorView = IVectorView<VoiceInformation>.fromRawPointer(retValuePtr,
+        iterableIid: '{3c33bb52-bd98-5c8c-adee-ee8da0628efc}',
+        creator: VoiceInformation.fromRawPointer);
+    final list = vectorView.toList();
+    vectorView.release();
 
-    final reference = IReference<double>.fromRawPointer(retValuePtr,
-        referenceIid: '{2f2d6c29-5473-5f3e-92e7-96572bb990e2}');
-    final value = reference.value;
-    reference.release();
-
-    return value;
+    return list;
   }
 
-  double? get timeDilutionOfPrecision {
+  VoiceInformation? get defaultVoice {
     final retValuePtr = calloc<COMObject>();
 
     final hr = ptr.ref.vtable
@@ -91,11 +86,6 @@ class IGeocoordinateSatelliteData2 extends IInspectable {
       return null;
     }
 
-    final reference = IReference<double>.fromRawPointer(retValuePtr,
-        referenceIid: '{2f2d6c29-5473-5f3e-92e7-96572bb990e2}');
-    final value = reference.value;
-    reference.release();
-
-    return value;
+    return VoiceInformation.fromRawPointer(retValuePtr);
   }
 }

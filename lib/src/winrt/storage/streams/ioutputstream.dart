@@ -1,4 +1,4 @@
-// igeocoordinatesatellitedata2.dart
+// ioutputstream.dart
 
 // THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED DIRECTLY.
 
@@ -6,6 +6,7 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+import 'dart:async';
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
@@ -19,25 +20,25 @@ import '../../../utils.dart';
 import '../../../win32/api_ms_win_core_winrt_string_l1_1_0.g.dart';
 import '../../../winrt_callbacks.dart';
 import '../../../winrt_helpers.dart';
-import '../../foundation/ireference.dart';
+import '../../foundation/iasyncoperation.dart';
+import '../../foundation/iclosable.dart';
+import '../../internal/async_helpers.dart';
 import '../../internal/hstring_array.dart';
-import '../../internal/ipropertyvalue_helpers.dart';
+import 'ibuffer.dart';
 
 /// @nodoc
-const IID_IGeocoordinateSatelliteData2 =
-    '{761c8cfd-a19d-5a51-80f5-71676115483e}';
+const IID_IOutputStream = '{905a0fe6-bc53-11df-8c49-001e4fc686da}';
 
 /// {@category Interface}
 /// {@category winrt}
-class IGeocoordinateSatelliteData2 extends IInspectable {
+class IOutputStream extends IInspectable implements IClosable {
   // vtable begins at 6, is 2 entries long.
-  IGeocoordinateSatelliteData2.fromRawPointer(super.ptr);
+  IOutputStream.fromRawPointer(super.ptr);
 
-  factory IGeocoordinateSatelliteData2.from(IInspectable interface) =>
-      IGeocoordinateSatelliteData2.fromRawPointer(
-          interface.toInterface(IID_IGeocoordinateSatelliteData2));
+  factory IOutputStream.from(IInspectable interface) =>
+      IOutputStream.fromRawPointer(interface.toInterface(IID_IOutputStream));
 
-  double? get geometricDilutionOfPrecision {
+  Pointer<COMObject> writeAsync(IBuffer? buffer) {
     final retValuePtr = calloc<COMObject>();
 
     final hr = ptr.ref.vtable
@@ -45,31 +46,27 @@ class IGeocoordinateSatelliteData2 extends IInspectable {
             .cast<
                 Pointer<
                     NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+                        HRESULT Function(Pointer, Pointer<COMObject> buffer,
+                            Pointer<COMObject>)>>>()
             .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
+            .asFunction<
+                int Function(
+                    Pointer, Pointer<COMObject> buffer, Pointer<COMObject>)>()(
+        ptr.ref.lpVtbl,
+        buffer == null ? nullptr : buffer.ptr.cast<Pointer<COMObject>>().value,
+        retValuePtr);
 
     if (FAILED(hr)) {
       free(retValuePtr);
       throw WindowsException(hr);
     }
 
-    if (retValuePtr.ref.lpVtbl == nullptr) {
-      free(retValuePtr);
-      return null;
-    }
-
-    final reference = IReference<double>.fromRawPointer(retValuePtr,
-        referenceIid: '{2f2d6c29-5473-5f3e-92e7-96572bb990e2}');
-    final value = reference.value;
-    reference.release();
-
-    return value;
+    return retValuePtr;
   }
 
-  double? get timeDilutionOfPrecision {
+  Future<bool> flushAsync() {
     final retValuePtr = calloc<COMObject>();
+    final completer = Completer<bool>();
 
     final hr = ptr.ref.vtable
             .elementAt(7)
@@ -86,16 +83,16 @@ class IGeocoordinateSatelliteData2 extends IInspectable {
       throw WindowsException(hr);
     }
 
-    if (retValuePtr.ref.lpVtbl == nullptr) {
-      free(retValuePtr);
-      return null;
-    }
+    final asyncOperation = IAsyncOperation<bool>.fromRawPointer(retValuePtr);
+    completeAsyncOperation(
+        asyncOperation, completer, asyncOperation.getResults);
 
-    final reference = IReference<double>.fromRawPointer(retValuePtr,
-        referenceIid: '{2f2d6c29-5473-5f3e-92e7-96572bb990e2}');
-    final value = reference.value;
-    reference.release();
-
-    return value;
+    return completer.future;
   }
+
+  // IClosable methods
+  late final _iClosable = IClosable.from(this);
+
+  @override
+  void close() => _iClosable.close();
 }
