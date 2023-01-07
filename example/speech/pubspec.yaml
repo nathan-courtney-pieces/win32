@@ -1,0 +1,22 @@
+name: speech
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0-55.0.dev <4.0.0'
+
+dependencies:
+  audioplayers: ^1.2.0
+  flutter:
+    sdk: flutter
+  win32:
+    path: ../..
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+
+dependency_overrides:
+  win32:
+    path: ../..

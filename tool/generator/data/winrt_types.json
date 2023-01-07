@@ -55,6 +55,7 @@
     "Windows.Storage.Pickers.FileOpenPicker": "Represents a UI element that lets the user choose and open files. In a desktop app, before using an instance of this class in a way that displays UI, you'll need to associate the object with its owner's window handle.",
     "Windows.Storage.Streams.IBuffer": "Represents a referenced array of bytes used by byte stream read and write interfaces. Buffer is the class implementation of this interface.",
     "Windows.Storage.UserDataPaths": "Returns full paths for common user data folders. User data folders are based on the KNOWNFOLDERID naming pattern.",
+    "Windows.Storage.Streams.DataReader": "Reads data from an input stream.",
     "Windows.UI.Notifications.NotificationData": "Stores data for display in a toast notification.",
     "Windows.UI.ViewManagement.UISettings": "Contains a set of common app user interface settings and operations."
 }
