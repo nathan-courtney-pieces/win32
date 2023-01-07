@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:audioplayers/audioplayers.dart';
+import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
 import 'package:win32/winrt.dart';
 
@@ -26,6 +29,14 @@ class HomePage extends StatelessWidget {
     final synthesisStream =
         await synthesizer.synthesizeTextToStreamAsync(textToSpeak);
     final player = AudioPlayer();
+    final buffer = Buffer.create(synthesisStream!.size);
+    synthesisStream.readAsync(
+        buffer, synthesisStream.size, InputStreamOptions.none);
+    final dataReader = DataReader.fromBuffer(buffer)!;
+    final wav = calloc<BYTE>(synthesisStream.size);
+    dataReader.readBytes(synthesisStream.size, wav);
+    final source = BytesSource(wav.asTypedList(synthesisStream.size));
+    player.play(source);
   }
 
   @override
