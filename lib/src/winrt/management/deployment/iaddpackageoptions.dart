@@ -38,28 +38,28 @@ class IAddPackageOptions extends IInspectable {
       IAddPackageOptions.fromRawPointer(
           interface.toInterface(IID_IAddPackageOptions));
 
-  IVector<Uri> get dependencyPackageUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(6)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    return IVector.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-  }
+  // IVector<Uri> get dependencyPackageUris {
+  //   final retValuePtr = calloc<COMObject>();
+  //
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(6)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //           .value
+  //           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //       ptr.ref.lpVtbl, retValuePtr);
+  //
+  //   if (FAILED(hr)) {
+  //     free(retValuePtr);
+  //     throw WindowsException(hr);
+  //   }
+  //
+  //   return IVector.fromRawPointer(retValuePtr,
+  //       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+  //       creator: Uri.fromRawPointer);
+  // }
 
   PackageVolume? get targetVolume {
     final retValuePtr = calloc<COMObject>();
@@ -124,51 +124,51 @@ class IAddPackageOptions extends IInspectable {
         iterableIid: '{e2fcc7c1-3bfc-5a0b-b2b0-72e769d1cb7e}');
   }
 
-  IVector<Uri> get optionalPackageUris {
-    final retValuePtr = calloc<COMObject>();
+  // IVector<Uri> get optionalPackageUris {
+  //   final retValuePtr = calloc<COMObject>();
+  //
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(10)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //           .value
+  //           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //       ptr.ref.lpVtbl, retValuePtr);
+  //
+  //   if (FAILED(hr)) {
+  //     free(retValuePtr);
+  //     throw WindowsException(hr);
+  //   }
+  //
+  //   return IVector.fromRawPointer(retValuePtr,
+  //       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+  //       creator: Uri.fromRawPointer);
+  // }
 
-    final hr = ptr.ref.vtable
-            .elementAt(10)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    return IVector.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-  }
-
-  IVector<Uri> get relatedPackageUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(11)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    return IVector.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-  }
+  // IVector<Uri> get relatedPackageUris {
+  //   final retValuePtr = calloc<COMObject>();
+  //
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(11)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //           .value
+  //           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //       ptr.ref.lpVtbl, retValuePtr);
+  //
+  //   if (FAILED(hr)) {
+  //     free(retValuePtr);
+  //     throw WindowsException(hr);
+  //   }
+  //
+  //   return IVector.fromRawPointer(retValuePtr,
+  //       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+  //       creator: Uri.fromRawPointer);
+  // }
 
   Uri? get externalLocationUri {
     final retValuePtr = calloc<COMObject>();
@@ -200,29 +200,29 @@ class IAddPackageOptions extends IInspectable {
     return Uri.parse(uriAsString);
   }
 
-  set externalLocationUri(Uri? value) {
-    final winrtUri =
-        value == null ? null : winrt_uri.Uri.createUri(value.toString());
-
-    try {
-      final hr = ptr.ref.vtable
-              .elementAt(13)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-              .value
-              .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-          ptr.ref.lpVtbl,
-          value == null
-              ? nullptr
-              : winrtUri.ptr.cast<Pointer<COMObject>>().value);
-
-      if (FAILED(hr)) throw WindowsException(hr);
-    } finally {
-      winrtUri?.release();
-    }
-  }
+  // set externalLocationUri(Uri? value) {
+  //   final winrtUri =
+  //       value == null ? null : winrt_uri.Uri.createUri(value.toString());
+  //
+  //   try {
+  //     final hr = ptr.ref.vtable
+  //             .elementAt(13)
+  //             .cast<
+  //                 Pointer<
+  //                     NativeFunction<
+  //                         HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //             .value
+  //             .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //         ptr.ref.lpVtbl,
+  //         value == null
+  //             ? nullptr
+  //             : winrtUri.ptr.cast<Pointer<COMObject>>().value);
+  //
+  //     if (FAILED(hr)) throw WindowsException(hr);
+  //   } finally {
+  //     winrtUri?.release();
+  //   }
+  // }
 
   StubPackageOption get stubPackageOption {
     final retValuePtr = calloc<Int32>();

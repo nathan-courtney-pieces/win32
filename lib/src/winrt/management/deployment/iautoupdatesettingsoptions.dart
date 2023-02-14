@@ -34,24 +34,17 @@ class IAutoUpdateSettingsOptions extends IInspectable {
   IAutoUpdateSettingsOptions.fromRawPointer(super.ptr);
 
   factory IAutoUpdateSettingsOptions.from(IInspectable interface) =>
-      IAutoUpdateSettingsOptions.fromRawPointer(
-          interface.toInterface(IID_IAutoUpdateSettingsOptions));
+      IAutoUpdateSettingsOptions.fromRawPointer(interface.toInterface(IID_IAutoUpdateSettingsOptions));
 
   PackageVersion get version {
     final retValuePtr = calloc<PackageVersion>();
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(6)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Pointer<PackageVersion>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, Pointer<PackageVersion>)>()(
-              ptr.ref.lpVtbl, retValuePtr);
+      final hr = ptr.ref.vtable
+          .elementAt(6)
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<PackageVersion>)>>>()
+          .value
+          .asFunction<int Function(Pointer, Pointer<PackageVersion>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -63,12 +56,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
   set version(PackageVersion value) {
     final hr = ptr.ref.vtable
         .elementAt(7)
-        .cast<
-            Pointer<
-                NativeFunction<HRESULT Function(Pointer, PackageVersion)>>>()
+        .cast<Pointer<NativeFunction<HRESULT Function(Pointer, PackageVersion)>>>()
         .value
-        .asFunction<
-            int Function(Pointer, PackageVersion)>()(ptr.ref.lpVtbl, value);
+        .asFunction<int Function(Pointer, PackageVersion)>()(ptr.ref.lpVtbl, value);
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
@@ -77,14 +67,10 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     final retValuePtr = calloc<COMObject>();
 
     final hr = ptr.ref.vtable
-            .elementAt(8)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
+        .elementAt(8)
+        .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+        .value
+        .asFunction<int Function(Pointer, Pointer<COMObject>)>()(ptr.ref.lpVtbl, retValuePtr);
 
     if (FAILED(hr)) {
       free(retValuePtr);
@@ -103,29 +89,29 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     return Uri.parse(uriAsString);
   }
 
-  set appInstallerUri(Uri? value) {
-    final winrtUri =
-        value == null ? null : winrt_uri.Uri.createUri(value.toString());
-
-    try {
-      final hr = ptr.ref.vtable
-              .elementAt(9)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-              .value
-              .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-          ptr.ref.lpVtbl,
-          value == null
-              ? nullptr
-              : winrtUri.ptr.cast<Pointer<COMObject>>().value);
-
-      if (FAILED(hr)) throw WindowsException(hr);
-    } finally {
-      winrtUri?.release();
-    }
-  }
+  // set appInstallerUri(Uri? value) {
+  //   final winrtUri =
+  //       value == null ? null : winrt_uri.Uri.createUri(value.toString());
+  //
+  //   try {
+  //     final hr = ptr.ref.vtable
+  //             .elementAt(9)
+  //             .cast<
+  //                 Pointer<
+  //                     NativeFunction<
+  //                         HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //             .value
+  //             .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //         ptr.ref.lpVtbl,
+  //         value == null
+  //             ? nullptr
+  //             : winrtUri.ptr.cast<Pointer<COMObject>>().value);
+  //
+  //     if (FAILED(hr)) throw WindowsException(hr);
+  //   } finally {
+  //     winrtUri?.release();
+  //   }
+  // }
 
   bool get onLaunch {
     final retValuePtr = calloc<Bool>();
@@ -133,13 +119,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     try {
       final hr = ptr.ref.vtable
           .elementAt(10)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
+          .asFunction<int Function(Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -166,13 +148,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     try {
       final hr = ptr.ref.vtable
           .elementAt(12)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Uint32>)>>>()
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Uint32>)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Uint32>)>()(ptr.ref.lpVtbl, retValuePtr);
+          .asFunction<int Function(Pointer, Pointer<Uint32>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -199,13 +177,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     try {
       final hr = ptr.ref.vtable
           .elementAt(14)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
+          .asFunction<int Function(Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -232,13 +206,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     try {
       final hr = ptr.ref.vtable
           .elementAt(16)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
+          .asFunction<int Function(Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -265,13 +235,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     try {
       final hr = ptr.ref.vtable
           .elementAt(18)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
+          .asFunction<int Function(Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -298,13 +264,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     try {
       final hr = ptr.ref.vtable
           .elementAt(20)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
+          .asFunction<int Function(Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -331,13 +293,9 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     try {
       final hr = ptr.ref.vtable
           .elementAt(22)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
+          .cast<Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Bool>)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
+          .asFunction<int Function(Pointer, Pointer<Bool>)>()(ptr.ref.lpVtbl, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -358,95 +316,95 @@ class IAutoUpdateSettingsOptions extends IInspectable {
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
-  IVector<Uri> get updateUris {
-    final retValuePtr = calloc<COMObject>();
+// IVector<Uri> get updateUris {
+//   final retValuePtr = calloc<COMObject>();
+//
+//   final hr = ptr.ref.vtable
+//           .elementAt(24)
+//           .cast<
+//               Pointer<
+//                   NativeFunction<
+//                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+//           .value
+//           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+//       ptr.ref.lpVtbl, retValuePtr);
+//
+//   if (FAILED(hr)) {
+//     free(retValuePtr);
+//     throw WindowsException(hr);
+//   }
+//
+//   return IVector.fromRawPointer(retValuePtr,
+//       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+//       creator: Uri.fromRawPointer);
+// }
 
-    final hr = ptr.ref.vtable
-            .elementAt(24)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
+// IVector<Uri> get repairUris {
+//   final retValuePtr = calloc<COMObject>();
+//
+//   final hr = ptr.ref.vtable
+//           .elementAt(25)
+//           .cast<
+//               Pointer<
+//                   NativeFunction<
+//                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+//           .value
+//           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+//       ptr.ref.lpVtbl, retValuePtr);
+//
+//   if (FAILED(hr)) {
+//     free(retValuePtr);
+//     throw WindowsException(hr);
+//   }
+//
+//   return IVector.fromRawPointer(retValuePtr,
+//       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+//       creator: Uri.fromRawPointer);
+// }
 
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
+// IVector<Uri> get dependencyPackageUris {
+//   final retValuePtr = calloc<COMObject>();
+//
+//   final hr = ptr.ref.vtable
+//           .elementAt(26)
+//           .cast<
+//               Pointer<
+//                   NativeFunction<
+//                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+//           .value
+//           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+//       ptr.ref.lpVtbl, retValuePtr);
+//
+//   if (FAILED(hr)) {
+//     free(retValuePtr);
+//     throw WindowsException(hr);
+//   }
+//
+//   return IVector.fromRawPointer(retValuePtr,
+//       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+//       creator: Uri.fromRawPointer);
+// }
 
-    return IVector.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-  }
-
-  IVector<Uri> get repairUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(25)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    return IVector.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-  }
-
-  IVector<Uri> get dependencyPackageUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(26)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    return IVector.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-  }
-
-  IVector<Uri> get optionalPackageUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(27)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    return IVector.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-  }
+// IVector<Uri> get optionalPackageUris {
+//   final retValuePtr = calloc<COMObject>();
+//
+//   final hr = ptr.ref.vtable
+//           .elementAt(27)
+//           .cast<
+//               Pointer<
+//                   NativeFunction<
+//                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+//           .value
+//           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+//       ptr.ref.lpVtbl, retValuePtr);
+//
+//   if (FAILED(hr)) {
+//     free(retValuePtr);
+//     throw WindowsException(hr);
+//   }
+//
+//   return IVector.fromRawPointer(retValuePtr,
+//       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+//       creator: Uri.fromRawPointer);
+// }
 }

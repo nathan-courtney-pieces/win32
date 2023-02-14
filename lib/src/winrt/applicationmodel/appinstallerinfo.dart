@@ -80,18 +80,18 @@ class AppInstallerInfo extends IInspectable
   @override
   DateTime? get pausedUntil => _iAppInstallerInfo2.pausedUntil;
 
-  @override
-  List<Uri> get updateUris => _iAppInstallerInfo2.updateUris;
-
-  @override
-  List<Uri> get repairUris => _iAppInstallerInfo2.repairUris;
-
-  @override
-  List<Uri> get dependencyPackageUris =>
-      _iAppInstallerInfo2.dependencyPackageUris;
-
-  @override
-  List<Uri> get optionalPackageUris => _iAppInstallerInfo2.optionalPackageUris;
+  // @override
+  // List<Uri> get updateUris => _iAppInstallerInfo2.updateUris;
+  //
+  // @override
+  // List<Uri> get repairUris => _iAppInstallerInfo2.repairUris;
+  //
+  // @override
+  // List<Uri> get dependencyPackageUris =>
+  //     _iAppInstallerInfo2.dependencyPackageUris;
+  //
+  // @override
+  // List<Uri> get optionalPackageUris => _iAppInstallerInfo2.optionalPackageUris;
 
   @override
   AppInstallerPolicySource get policySource => _iAppInstallerInfo2.policySource;

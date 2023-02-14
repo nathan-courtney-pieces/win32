@@ -43,9 +43,9 @@ class RegisterPackageOptions extends IInspectable
   // IRegisterPackageOptions methods
   late final _iRegisterPackageOptions = IRegisterPackageOptions.from(this);
 
-  @override
-  IVector<Uri> get dependencyPackageUris =>
-      _iRegisterPackageOptions.dependencyPackageUris;
+  // @override
+  // IVector<Uri> get dependencyPackageUris =>
+  //     _iRegisterPackageOptions.dependencyPackageUris;
 
   @override
   PackageVolume? get appDataVolume => _iRegisterPackageOptions.appDataVolume;
@@ -61,9 +61,9 @@ class RegisterPackageOptions extends IInspectable
   @override
   Uri? get externalLocationUri => _iRegisterPackageOptions.externalLocationUri;
 
-  @override
-  set externalLocationUri(Uri? value) =>
-      _iRegisterPackageOptions.externalLocationUri = value;
+  // @override
+  // set externalLocationUri(Uri? value) =>
+  //     _iRegisterPackageOptions.externalLocationUri = value;
 
   @override
   bool get developerMode => _iRegisterPackageOptions.developerMode;

@@ -278,113 +278,113 @@ class IAppInstallerInfo2 extends IInspectable {
     return value;
   }
 
-  List<Uri> get updateUris {
-    final retValuePtr = calloc<COMObject>();
+  // List<Uri> get updateUris {
+  //   final retValuePtr = calloc<COMObject>();
+  //
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(16)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //           .value
+  //           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //       ptr.ref.lpVtbl, retValuePtr);
+  //
+  //   if (FAILED(hr)) {
+  //     free(retValuePtr);
+  //     throw WindowsException(hr);
+  //   }
+  //
+  //   final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
+  //       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+  //       creator: Uri.fromRawPointer);
+  //   final list = vectorView.toList();
+  //   vectorView.release();
+  //
+  //   return list;
+  // }
 
-    final hr = ptr.ref.vtable
-            .elementAt(16)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
+  // List<Uri> get repairUris {
+  //   final retValuePtr = calloc<COMObject>();
+  //
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(17)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //           .value
+  //           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //       ptr.ref.lpVtbl, retValuePtr);
+  //
+  //   if (FAILED(hr)) {
+  //     free(retValuePtr);
+  //     throw WindowsException(hr);
+  //   }
+  //
+  //   final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
+  //       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+  //       creator: Uri.fromRawPointer);
+  //   final list = vectorView.toList();
+  //   vectorView.release();
+  //
+  //   return list;
+  // }
 
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
+  // List<Uri> get dependencyPackageUris {
+  //   final retValuePtr = calloc<COMObject>();
+  //
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(18)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //           .value
+  //           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //       ptr.ref.lpVtbl, retValuePtr);
+  //
+  //   if (FAILED(hr)) {
+  //     free(retValuePtr);
+  //     throw WindowsException(hr);
+  //   }
+  //
+  //   final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
+  //       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+  //       creator: Uri.fromRawPointer);
+  //   final list = vectorView.toList();
+  //   vectorView.release();
+  //
+  //   return list;
+  // }
 
-    final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-    final list = vectorView.toList();
-    vectorView.release();
-
-    return list;
-  }
-
-  List<Uri> get repairUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(17)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-    final list = vectorView.toList();
-    vectorView.release();
-
-    return list;
-  }
-
-  List<Uri> get dependencyPackageUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(18)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-    final list = vectorView.toList();
-    vectorView.release();
-
-    return list;
-  }
-
-  List<Uri> get optionalPackageUris {
-    final retValuePtr = calloc<COMObject>();
-
-    final hr = ptr.ref.vtable
-            .elementAt(19)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
-
-    if (FAILED(hr)) {
-      free(retValuePtr);
-      throw WindowsException(hr);
-    }
-
-    final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
-        iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
-        creator: Uri.fromRawPointer);
-    final list = vectorView.toList();
-    vectorView.release();
-
-    return list;
-  }
+  // List<Uri> get optionalPackageUris {
+  //   final retValuePtr = calloc<COMObject>();
+  //
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(19)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(Pointer, Pointer<COMObject>)>>>()
+  //           .value
+  //           .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+  //       ptr.ref.lpVtbl, retValuePtr);
+  //
+  //   if (FAILED(hr)) {
+  //     free(retValuePtr);
+  //     throw WindowsException(hr);
+  //   }
+  //
+  //   final vectorView = IVectorView<Uri>.fromRawPointer(retValuePtr,
+  //       iterableIid: '{b0d63b78-78ad-5e31-b6d8-e32a0e16c447}',
+  //       creator: Uri.fromRawPointer);
+  //   final list = vectorView.toList();
+  //   vectorView.release();
+  //
+  //   return list;
+  // }
 
   AppInstallerPolicySource get policySource {
     final retValuePtr = calloc<Int32>();

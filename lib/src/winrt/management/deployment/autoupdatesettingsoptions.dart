@@ -68,9 +68,9 @@ class AutoUpdateSettingsOptions extends IInspectable
   @override
   Uri? get appInstallerUri => _iAutoUpdateSettingsOptions.appInstallerUri;
 
-  @override
-  set appInstallerUri(Uri? value) =>
-      _iAutoUpdateSettingsOptions.appInstallerUri = value;
+  // @override
+  // set appInstallerUri(Uri? value) =>
+  //     _iAutoUpdateSettingsOptions.appInstallerUri = value;
 
   @override
   bool get onLaunch => _iAutoUpdateSettingsOptions.onLaunch;
@@ -124,17 +124,17 @@ class AutoUpdateSettingsOptions extends IInspectable
   set isAutoRepairEnabled(bool value) =>
       _iAutoUpdateSettingsOptions.isAutoRepairEnabled = value;
 
-  @override
-  IVector<Uri> get updateUris => _iAutoUpdateSettingsOptions.updateUris;
+  // @override
+  // IVector<Uri> get updateUris => _iAutoUpdateSettingsOptions.updateUris;
 
-  @override
-  IVector<Uri> get repairUris => _iAutoUpdateSettingsOptions.repairUris;
+  // @override
+  // IVector<Uri> get repairUris => _iAutoUpdateSettingsOptions.repairUris;
 
-  @override
-  IVector<Uri> get dependencyPackageUris =>
-      _iAutoUpdateSettingsOptions.dependencyPackageUris;
+  // @override
+  // IVector<Uri> get dependencyPackageUris =>
+  //     _iAutoUpdateSettingsOptions.dependencyPackageUris;
 
-  @override
-  IVector<Uri> get optionalPackageUris =>
-      _iAutoUpdateSettingsOptions.optionalPackageUris;
+  // @override
+  // IVector<Uri> get optionalPackageUris =>
+  //     _iAutoUpdateSettingsOptions.optionalPackageUris;
 }

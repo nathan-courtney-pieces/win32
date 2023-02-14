@@ -43,9 +43,9 @@ class AddPackageOptions extends IInspectable
   // IAddPackageOptions methods
   late final _iAddPackageOptions = IAddPackageOptions.from(this);
 
-  @override
-  IVector<Uri> get dependencyPackageUris =>
-      _iAddPackageOptions.dependencyPackageUris;
+  // @override
+  // IVector<Uri> get dependencyPackageUris =>
+  //     _iAddPackageOptions.dependencyPackageUris;
 
   @override
   PackageVolume? get targetVolume => _iAddPackageOptions.targetVolume;
@@ -58,19 +58,19 @@ class AddPackageOptions extends IInspectable
   IVector<String> get optionalPackageFamilyNames =>
       _iAddPackageOptions.optionalPackageFamilyNames;
 
-  @override
-  IVector<Uri> get optionalPackageUris =>
-      _iAddPackageOptions.optionalPackageUris;
+  // @override
+  // IVector<Uri> get optionalPackageUris =>
+  //     _iAddPackageOptions.optionalPackageUris;
 
-  @override
-  IVector<Uri> get relatedPackageUris => _iAddPackageOptions.relatedPackageUris;
+  // @override
+  // IVector<Uri> get relatedPackageUris => _iAddPackageOptions.relatedPackageUris;
 
   @override
   Uri? get externalLocationUri => _iAddPackageOptions.externalLocationUri;
 
-  @override
-  set externalLocationUri(Uri? value) =>
-      _iAddPackageOptions.externalLocationUri = value;
+  // @override
+  // set externalLocationUri(Uri? value) =>
+  //     _iAddPackageOptions.externalLocationUri = value;
 
   @override
   StubPackageOption get stubPackageOption =>

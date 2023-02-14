@@ -41,120 +41,120 @@ class IAsyncActionWithProgress extends IInspectable implements IAsyncInfo {
       IAsyncActionWithProgress.fromRawPointer(
           interface.toInterface(IID_IAsyncActionWithProgress));
 
-  set progress(Pointer<NativeFunction<AsyncActionProgressHandler>> value) {
-    final hr =
-        ptr.ref.vtable
-                .elementAt(6)
-                .cast<
-                    Pointer<
-                        NativeFunction<
-                            HRESULT Function(
-                                Pointer,
-                                Pointer<
-                                    NativeFunction<
-                                        AsyncActionProgressHandler>>)>>>()
-                .value
-                .asFunction<
-                    int Function(Pointer,
-                        Pointer<NativeFunction<AsyncActionProgressHandler>>)>()(
-            ptr.ref.lpVtbl, value);
+  // set progress(Pointer<NativeFunction<AsyncActionProgressHandler>> value) {
+  //   final hr =
+  //       ptr.ref.vtable
+  //               .elementAt(6)
+  //               .cast<
+  //                   Pointer<
+  //                       NativeFunction<
+  //                           HRESULT Function(
+  //                               Pointer,
+  //                               Pointer<
+  //                                   NativeFunction<
+  //                                       AsyncActionProgressHandler>>)>>>()
+  //               .value
+  //               .asFunction<
+  //                   int Function(Pointer,
+  //                       Pointer<NativeFunction<AsyncActionProgressHandler>>)>()(
+  //           ptr.ref.lpVtbl, value);
+  //
+  //   if (FAILED(hr)) throw WindowsException(hr);
+  // }
 
-    if (FAILED(hr)) throw WindowsException(hr);
-  }
+  // Pointer<NativeFunction<AsyncActionProgressHandler>> get progress {
+  //   final retValuePtr =
+  //       calloc<Pointer<NativeFunction<AsyncActionProgressHandler>>>();
+  //
+  //   try {
+  //     final hr = ptr.ref.vtable
+  //             .elementAt(7)
+  //             .cast<
+  //                 Pointer<
+  //                     NativeFunction<
+  //                         HRESULT Function(
+  //                             Pointer,
+  //                             Pointer<
+  //                                 Pointer<
+  //                                     NativeFunction<
+  //                                         AsyncActionProgressHandler>>>)>>>()
+  //             .value
+  //             .asFunction<
+  //                 int Function(
+  //                     Pointer,
+  //                     Pointer<
+  //                         Pointer<
+  //                             NativeFunction<AsyncActionProgressHandler>>>)>()(
+  //         ptr.ref.lpVtbl, retValuePtr);
+  //
+  //     if (FAILED(hr)) throw WindowsException(hr);
+  //
+  //     final retValue = retValuePtr.value;
+  //     return retValue;
+  //   } finally {
+  //     free(retValuePtr);
+  //   }
+  // }
 
-  Pointer<NativeFunction<AsyncActionProgressHandler>> get progress {
-    final retValuePtr =
-        calloc<Pointer<NativeFunction<AsyncActionProgressHandler>>>();
+  // set completed(
+  //     Pointer<NativeFunction<AsyncActionWithProgressCompletedHandler>> value) {
+  //   final hr = ptr.ref.vtable
+  //           .elementAt(8)
+  //           .cast<
+  //               Pointer<
+  //                   NativeFunction<
+  //                       HRESULT Function(
+  //                           Pointer,
+  //                           Pointer<
+  //                               NativeFunction<
+  //                                   AsyncActionWithProgressCompletedHandler>>)>>>()
+  //           .value
+  //           .asFunction<
+  //               int Function(
+  //                   Pointer,
+  //                   Pointer<
+  //                       NativeFunction<
+  //                           AsyncActionWithProgressCompletedHandler>>)>()(
+  //       ptr.ref.lpVtbl, value);
+  //
+  //   if (FAILED(hr)) throw WindowsException(hr);
+  // }
 
-    try {
-      final hr = ptr.ref.vtable
-              .elementAt(7)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(
-                              Pointer,
-                              Pointer<
-                                  Pointer<
-                                      NativeFunction<
-                                          AsyncActionProgressHandler>>>)>>>()
-              .value
-              .asFunction<
-                  int Function(
-                      Pointer,
-                      Pointer<
-                          Pointer<
-                              NativeFunction<AsyncActionProgressHandler>>>)>()(
-          ptr.ref.lpVtbl, retValuePtr);
-
-      if (FAILED(hr)) throw WindowsException(hr);
-
-      final retValue = retValuePtr.value;
-      return retValue;
-    } finally {
-      free(retValuePtr);
-    }
-  }
-
-  set completed(
-      Pointer<NativeFunction<AsyncActionWithProgressCompletedHandler>> value) {
-    final hr = ptr.ref.vtable
-            .elementAt(8)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(
-                            Pointer,
-                            Pointer<
-                                NativeFunction<
-                                    AsyncActionWithProgressCompletedHandler>>)>>>()
-            .value
-            .asFunction<
-                int Function(
-                    Pointer,
-                    Pointer<
-                        NativeFunction<
-                            AsyncActionWithProgressCompletedHandler>>)>()(
-        ptr.ref.lpVtbl, value);
-
-    if (FAILED(hr)) throw WindowsException(hr);
-  }
-
-  Pointer<NativeFunction<AsyncActionWithProgressCompletedHandler>>
-      get completed {
-    final retValuePtr = calloc<
-        Pointer<NativeFunction<AsyncActionWithProgressCompletedHandler>>>();
-
-    try {
-      final hr = ptr.ref.vtable
-              .elementAt(9)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(
-                              Pointer,
-                              Pointer<
-                                  Pointer<
-                                      NativeFunction<
-                                          AsyncActionWithProgressCompletedHandler>>>)>>>()
-              .value
-              .asFunction<
-                  int Function(
-                      Pointer,
-                      Pointer<
-                          Pointer<
-                              NativeFunction<
-                                  AsyncActionWithProgressCompletedHandler>>>)>()(
-          ptr.ref.lpVtbl, retValuePtr);
-
-      if (FAILED(hr)) throw WindowsException(hr);
-
-      final retValue = retValuePtr.value;
-      return retValue;
-    } finally {
-      free(retValuePtr);
-    }
-  }
+  // Pointer<NativeFunction<AsyncActionWithProgressCompletedHandler>>
+  //     get completed {
+  //   final retValuePtr = calloc<
+  //       Pointer<NativeFunction<AsyncActionWithProgressCompletedHandler>>>();
+  //
+  //   try {
+  //     final hr = ptr.ref.vtable
+  //             .elementAt(9)
+  //             .cast<
+  //                 Pointer<
+  //                     NativeFunction<
+  //                         HRESULT Function(
+  //                             Pointer,
+  //                             Pointer<
+  //                                 Pointer<
+  //                                     NativeFunction<
+  //                                         AsyncActionWithProgressCompletedHandler>>>)>>>()
+  //             .value
+  //             .asFunction<
+  //                 int Function(
+  //                     Pointer,
+  //                     Pointer<
+  //                         Pointer<
+  //                             NativeFunction<
+  //                                 AsyncActionWithProgressCompletedHandler>>>)>()(
+  //         ptr.ref.lpVtbl, retValuePtr);
+  //
+  //     if (FAILED(hr)) throw WindowsException(hr);
+  //
+  //     final retValue = retValuePtr.value;
+  //     return retValue;
+  //   } finally {
+  //     free(retValuePtr);
+  //   }
+  // }
 
   void getResults() {
     final hr = ptr.ref.vtable

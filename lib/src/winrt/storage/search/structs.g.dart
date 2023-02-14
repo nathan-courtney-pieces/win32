@@ -21,7 +21,7 @@ import 'package:ffi/ffi.dart';
 ///
 /// {@category Struct}
 class SortEntry extends Struct {
-  external int PropertyName;
+  // external int PropertyName;
 
   @Bool()
   external bool AscendingOrder;

@@ -43,9 +43,9 @@ class StagePackageOptions extends IInspectable
   // IStagePackageOptions methods
   late final _iStagePackageOptions = IStagePackageOptions.from(this);
 
-  @override
-  IVector<Uri> get dependencyPackageUris =>
-      _iStagePackageOptions.dependencyPackageUris;
+  // @override
+  // IVector<Uri> get dependencyPackageUris =>
+  //     _iStagePackageOptions.dependencyPackageUris;
 
   @override
   PackageVolume? get targetVolume => _iStagePackageOptions.targetVolume;
@@ -58,20 +58,20 @@ class StagePackageOptions extends IInspectable
   IVector<String> get optionalPackageFamilyNames =>
       _iStagePackageOptions.optionalPackageFamilyNames;
 
-  @override
-  IVector<Uri> get optionalPackageUris =>
-      _iStagePackageOptions.optionalPackageUris;
+  // @override
+  // IVector<Uri> get optionalPackageUris =>
+  //     _iStagePackageOptions.optionalPackageUris;
 
-  @override
-  IVector<Uri> get relatedPackageUris =>
-      _iStagePackageOptions.relatedPackageUris;
+  // @override
+  // IVector<Uri> get relatedPackageUris =>
+  //     _iStagePackageOptions.relatedPackageUris;
 
   @override
   Uri? get externalLocationUri => _iStagePackageOptions.externalLocationUri;
 
-  @override
-  set externalLocationUri(Uri? value) =>
-      _iStagePackageOptions.externalLocationUri = value;
+  // @override
+  // set externalLocationUri(Uri? value) =>
+  //     _iStagePackageOptions.externalLocationUri = value;
 
   @override
   StubPackageOption get stubPackageOption =>
