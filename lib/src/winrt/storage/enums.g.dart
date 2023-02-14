@@ -10,6 +10,27 @@
 
 import '../foundation/winrt_enum.dart';
 
+/// Specifies what to do if a file or folder with the specified name already
+/// exists in the current folder when you create a new file or folder.
+///
+/// {@category Enum}
+enum CreationCollisionOption implements WinRTEnum {
+  generateUniqueName(0),
+  replaceExisting(1),
+  failIfExists(2),
+  openIfExists(3);
+
+  @override
+  final int value;
+
+  const CreationCollisionOption(this.value);
+
+  factory CreationCollisionOption.from(int value) =>
+      CreationCollisionOption.values.firstWhere((e) => e.value == value,
+          orElse: () => throw ArgumentError.value(
+              value, 'value', 'No enum value with that value'));
+}
+
 /// Describes the attributes of a file or folder.
 ///
 /// {@category Enum}
@@ -135,4 +156,30 @@ class StorageItemTypes extends WinRTEnum {
     if (value != 0 && flag.value == 0) return false;
     return value & flag.value == flag.value;
   }
+}
+
+/// Describes the type of change that occurred to the storage library item.
+///
+/// {@category Enum}
+enum StorageLibraryChangeType implements WinRTEnum {
+  created(0),
+  deleted(1),
+  movedOrRenamed(2),
+  contentsChanged(3),
+  movedOutOfLibrary(4),
+  movedIntoLibrary(5),
+  contentsReplaced(6),
+  indexingStatusChanged(7),
+  encryptionChanged(8),
+  changeTrackingLost(9);
+
+  @override
+  final int value;
+
+  const StorageLibraryChangeType(this.value);
+
+  factory StorageLibraryChangeType.from(int value) =>
+      StorageLibraryChangeType.values.firstWhere((e) => e.value == value,
+          orElse: () => throw ArgumentError.value(
+              value, 'value', 'No enum value with that value'));
 }
