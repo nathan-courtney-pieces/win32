@@ -162,3 +162,13 @@ export 'src/winrt/foundation/structs.g.dart';
 export 'src/winrt/foundation/numerics/structs.g.dart';
 export 'src/winrt/gaming/input/structs.g.dart';
 export 'src/winrt/ui/structs.g.dart';
+
+// New Stuff
+export 'src/winrt/management/deployment/packagemanager.dart';
+export 'src/winrt/applicationmodel/enums.g.dart';
+export 'src/winrt/management/deployment/enums.g.dart';
+export 'src/winrt/management/deployment/packagevolume.dart';
+export 'src/winrt/foundation/iasyncoperationwithprogress.dart';
+export 'src/winrt/management/deployment/deploymentresult.dart';
+export 'src/winrt/applicationmodel/packageupdateavailabilityresult.dart';
+export 'src/winrt/applicationmodel/package.dart';
