@@ -28,6 +28,7 @@
     "Windows.Foundation.AsyncOperationCompletedHandler`1": "Represents a method that handles the completed event of an asynchronous operation.",
     "Windows.Foundation.AsyncOperationProgressHandler`2": "Represents a method that handles progress update events of an asynchronous operation that provides progress updates.",
     "Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2": "Represents a method that handles the completed event of an asynchronous operation that provides progress updates.",
+    "Windows.Foundation.Collections.IIterable`1": "Exposes an iterator that supports simple iteration over a collection of a specified type.\n\n",
     "Windows.Foundation.Collections.IPropertySet": "Represents a collection of key-value pairs, correlating several other collection interfaces.",
     "Windows.Foundation.Collections.IVector`1": "Represents a random-access collection of elements.",
     "Windows.Foundation.Collections.PropertySet": "Represents a property set, which is a set of [PropertyValue] objects with string keys.",

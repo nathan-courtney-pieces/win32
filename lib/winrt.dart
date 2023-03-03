@@ -172,3 +172,4 @@ export 'src/winrt/foundation/iasyncoperationwithprogress.dart';
 export 'src/winrt/management/deployment/deploymentresult.dart';
 export 'src/winrt/applicationmodel/packageupdateavailabilityresult.dart';
 export 'src/winrt/applicationmodel/package.dart';
+export 'src/winrt/system/user.dart';

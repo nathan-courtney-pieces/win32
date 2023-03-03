@@ -3,17 +3,16 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/tool/generator/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/tool/generator/build" />
-      <excludeFolder url="file://$MODULE_DIR$/tool/generator/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/explorer/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/explorer/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/explorer/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/tool/generator/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/tool/generator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/tool/generator/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Dart Packages" level="project" />
